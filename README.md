@@ -5,5 +5,3 @@
 to go to the other project, WSPR, and go through that first. This project takes the single band code and adds 
 low pass filter switching and different frequencies before and after sunrise. The code has been running for 
 a few months on my ESP32.
-
-![Fig 1  Block Diagram](https://github.com/mm5agm/WSPR-Multi-Band/assets/26571503/23530c78-1593-433a-9ae7-c63da3875fd0)
