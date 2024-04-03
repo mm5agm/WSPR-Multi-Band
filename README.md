@@ -1,5 +1,5 @@
 # WSPR Multi Band
-ESPP32 Multi Band WSPR beacon
+ESP32 Multi Band WSPR beacon
 
 
  ![ESP32_Multi_Band_WSPR](https://github.com/mm5agm/WSPR-Multi-Band/assets/26571503/16636cdf-7bfc-418a-9dc5-b5624069300c)
