@@ -11,5 +11,15 @@ a single band WSPR beacon running on an Espressif ESP32. If you haven't used the
 to go to the other project, WSPR, and go through that first. This project takes the single band code and adds 
 low pass filter switching and different frequencies before and after sunrise. The code has been running for 
 a few months on my ESP32.
+Variables that you need to set up
+char callsign[7] = "******";  //  USER CALLSIGN
+char locator[5] = "****";     //  USER MAIDENHEAD GRID LOCATOR first 4 characters.
+float latitude = 0.0;         // your latitude
+float longitude = 0.0;        // your longitude
+int txPower = 0;              // your actual TX power in dBm. A bare si5351 set at 8ma = 10dBm
+int dayTimeSlots = 0;         // Day time number of slots to transmit in each hour. Allowed values 1,2,3,5,6,8,10 and 15
+int nightTimeSlots = 0;       // Night time number of slots to transmit in each hour. Allowed values 1,2,3,5,6,8,10 and 15
+
+
 I'VE STILL TO ADD THE CODE TO THE REPOSITORY. SHOULD BE HERE BY MIDDLE OF APRIL. I'M JUST TIDYING IT AT THE MOMENT.
 Colin MM5AGM
