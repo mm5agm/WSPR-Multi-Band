@@ -24,9 +24,10 @@ Variables that you need to set up in the Wi-Fi section starting at approximately
 - const char* ssid = "*****";            // SSID of your Wifi network
 - const char* password = "*******";      // Password for your wifi network
 
-Variables that you may want to change in the NTP section starting at approximately line 121
+Variables that you may want to change in the NTP section starting at approximately line 120
 - #define DST_OFFSET 0                         // 1 for European summer time; 2 for US daylight saving time; 0 for no DST adjustment. 0 means UTC
 - #define TIME_ZONE +0.0f                      // used in NTP time calculation. UTC time zone difference in regards to UTC (floating point number)
 - const char* NTP_Server = "uk.pool.ntp.org";  // pick an ntp server in your area
 
-Colin MM5AGM
+Colin mm5agm@outlook.com
+
