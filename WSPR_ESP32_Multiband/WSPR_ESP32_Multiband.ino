@@ -132,8 +132,10 @@ SunSet sun;                // create instance
 
 /*****************************[ Other Global Variables]*******************************/
 #define BAUDRATE 115200  // Arduino serial monitor
+int randomChange = 75;    // 0 to 100.  a random value between -randomChange and +randomChange is applied to the TX frequency random(-100, 100)
 unsigned long freq;      // the frequency we will transmit
 float freqMHz;           //  the frequency to show on the OLED e.g. 18.106100
+
 unsigned long txFreq;    // the actual frequency being transmitted = freq +- random(randomChange)
 
 // Enumerate bands to make identification for GPIO and Frequency easy
