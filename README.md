@@ -1,6 +1,10 @@
 # WSPR Multi Band
 ESP32 Multi Band WSPR beacon
 
+If your new to the Arduino and ESP32 please read the readme.md in my WSPR repository for a comprehensive setup guide.
+
+It will save you time if you do the single band first. Once you get that going, you will only need to upload and compile WSPR_ESP32_Multiband.ino
+
 ![ESP32_Multi_Band_WSPR2](https://github.com/mm5agm/WSPR-Multi-Band/assets/26571503/0994136a-ab4c-493e-b3cf-0445bf33c8b7)
 
  It's been pointed out to me that pin outs in my Fritzing diagram are not in the same order as the pin outs in some of the ESP32 that users have bought. Unfortunately, there are a lot of variations of the ESP32. This isn't a problem if you use the same pins, no matter where they are located, as my sketch. The pins that I use are 3V3 and GND for power to the OLED, si5351 and real time clock. The I2C pins are SDA pin D21 and SCL pin D22. The pins I use to switch low pass filters are GPIO D12, GPIO D14,GPIO D26 and GPIO D27
