@@ -1,7 +1,7 @@
 # WSPR Multi Band
 ESP32 Multi Band WSPR beacon
 
-If your new to the Arduino and ESP32 please read the readme.md in my WSPR repository for a comprehensive setup guide.
+If you are new to the Arduino and ESP32 please read the readme.md in my WSPR repository for a comprehensive setup guide.
 
 It will save you time if you do the single band first. Once you get that going, you will only need to upload and compile WSPR_ESP32_Multiband.ino
 
