@@ -1,3 +1,5 @@
+// 12:20 16/June/2024
+
 /*****************************************************************************************************************
 ***                         Author Colin Campbell MM5AGM         mm5agm@outlook.com                            ***                                                                        ***
 *** This program is free software: you can redistribute it and/or modify it under the terms of the GNU         ***
@@ -74,13 +76,17 @@ This means that the LED will come on when WSPR is transmitting. If the led doesn
 #define WSPR_CTC 10672                  // CTC value for WSPR
 #define SYMBOL_COUNT WSPR_SYMBOL_COUNT  // txPower is determined by si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA) + any amplification you add
 
-char callsign[7] = "******";  // Your CALLSIGN
+char callsign[7] = "******";  // Your CALLSIGN - if it's more than 6 characters, change char callsign[7] to 1 more than the number of characters in your callsign
 char locator[5] = "****";     // Your MAIDENHEAD GRID LOCATOR first 4 characters.
 float latitude = 0.0;         // Your latitude. Doesn't need to be accurate. Only used to get sun rise and set times
 float longitude = 0.0;        // Your longitude. Doesn't need to be accurate. Only used to get sun rise and set times
+
+
 int txPower = 0;              // Your actual TX power in dBm. A bare si5351 set at 8ma = 10dBm
 int dayTimeSlots = 0;         // Day time number of slots to transmit in each hour. Values 1,2,3,5,6,8,10 and 15
 int nightTimeSlots = 0;       // Night time number of slots to transmit in each hour. Values 1,2,3,5,6,8,10 and 15
+
+int randomChange = 0;            // 0 to 100.  a random value between -randomChange and +randomChange is applied to the TX frequency random(-100, 100)
 
 uint8_t tx_buffer[SYMBOL_COUNT];  // create buffer to hold TX chars
 JTEncode jtencode;                //create instance
@@ -89,7 +95,7 @@ JTEncode jtencode;                //create instance
 const char* ssid = "*****";            // SSID of your Wifi network
 const char* password = "*******";      // Password for your wifi network
 int failCount = 20;                      // maximum number of times to attempt to connect to wi-fi. Attempts are 500Ms appart
-const char* WiFi_hostname = "ESP_WSPR";  // how it's reported on your router/hub
+const char* WiFi_hostname = "ESP_WSPR";  // how this esp32 connection is reported on your router/hub
 
 /******************************[ si5351 ]*******************************************************************************************/
 int32_t cal_factor = 0;     //Calibration factor obtained from Calibration arduino program in Examples. You must calbrate first
@@ -132,7 +138,6 @@ SunSet sun;                // create instance
 
 /*****************************[ Other Global Variables]*******************************/
 #define BAUDRATE 115200  // Arduino serial monitor
-int randomChange = 0;    // 0 to 100.  a random value between -randomChange and +randomChange is applied to the TX frequency random(-100, 100)
 unsigned long freq;      // the frequency we will transmit
 float freqMHz;           //  the frequency to show on the OLED e.g. 18.106100
 
@@ -441,8 +446,9 @@ void encode() {
 void txOn() {
   si5351.set_freq((txFreq * 100), SI5351_CLK0);
   si5351.set_clock_pwr(SI5351_CLK0, 1);  // switch on clock0
+    freqMHz = txFreq / 1000000.0; 
 #ifdef DEBUG
-  Serial.print("txFreq = ");
+  Serial.print("txOn  txFreq = ");
   Serial.print(txFreq, 6);
   Serial.print("  freqMHz = ");
   Serial.println(freqMHz, 6);
@@ -609,6 +615,10 @@ void setFrequency(int aBand) {
   }
   txFreq = freq + random(-randomChange, randomChange);
   freqMHz = txFreq / 1000000.0;
+  #ifdef DEBUG
+  Serial.print("txFreq = "); Serial.print(txFreq); Serial.print("   freqMHz = "); Serial.println(freqMHz,6);
+  #endif
+
 }
 
 /******************************[displaySunTimes]*****************
